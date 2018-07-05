@@ -335,6 +335,9 @@ class ParseCurlHttpClient implements ParseHttpable
     {
         $headerSize = $this->parseCurl->getInfo(CURLINFO_HEADER_SIZE);
 
+        //HoangNN: fix bug: cut header string incorrect.
+        return $headerSize;
+        
         // This corrects a Curl bug where header size does not account
         // for additional Proxy headers.
         if ($this->needsCurlProxyFix()) {
